@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PersonSerializer do
   let(:person) { create(:person, :with_email, :with_phone, :with_dob) }
   let(:serializer) { described_class.new(person) }
-  
+
   subject(:serialized) { serializer.serializable_hash }
 
   it 'includes all required attributes in the attributes object' do
@@ -23,7 +23,7 @@ RSpec.describe PersonSerializer do
         type: :people,
         attributes: {
           name: person.name,
-          email: person.email,  
+          email: person.email,
           phone_number: person.phone_number,
           date_of_birth: person.date_of_birth,
           relation: person.relation

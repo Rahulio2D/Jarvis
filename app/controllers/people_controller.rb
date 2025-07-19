@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
   def show
     person = PeopleService.find_by_uid(params[:uid])
-    
+
     if person
       render json: PersonSerializer.new(person).serializable_hash
     else
