@@ -86,3 +86,7 @@ make setup
 ```
 
 This will install dependencies and prepare the database.
+
+## Requests
+
+This project uses [Bruno](https://www.usebruno.com/) to handle requests. Bruno Requests can be found in the `requests/` directory.
