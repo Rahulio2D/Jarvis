@@ -1,0 +1,11 @@
+meta {
+  name: get_by_uid
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/people/example_uid
+  body: none
+  auth: inherit
+}
