@@ -36,7 +36,7 @@ RSpec.describe 'People', type: :request do
         expect(JSON.parse(response.body)).to eq({
           'errors' => [
             {
-              'status' => '404',
+              'status' => 404,
               'title' => 'Not Found',
               'detail' => 'Person not found'
             }

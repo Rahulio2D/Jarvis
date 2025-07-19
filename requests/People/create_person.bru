@@ -1,0 +1,26 @@
+meta {
+  name: create_person
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/people
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "data": {
+      "type": "people",
+      "attributes": {
+        "name": "John Doe",
+        "phone_number": "07412345678",
+        "email": "hello@example.com",
+        "date_of_birth": "1990-01-01",
+        "relation": "Friend"
+      }
+    }
+  }
+}

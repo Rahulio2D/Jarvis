@@ -7,13 +7,24 @@ class PeopleController < ApplicationController
     else
       render json: {
         errors: [
-          {
-            status: '404',
-            title: 'Not Found',
-            detail: 'Person not found'
-          }
+          errors_hash(404, 'Not Found', 'Person not found')
         ]
       }, status: :not_found
+    end
+  end
+
+  def create
+    attributes = params.to_unsafe_h.dig(:data, :attributes) || {}
+    result = PeopleService.create(attributes)
+
+    if result.is_a?(Person)
+      render json: PersonSerializer.new(result).serializable_hash, status: :created
+    else
+      render json: {
+        errors: result[:errors].map do |field, messages|
+          errors_hash(400, 'Bad Request', "#{field}: #{Array(messages).join(', ')}")
+        end
+      }, status: :bad_request
     end
   end
 end
