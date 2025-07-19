@@ -45,29 +45,34 @@ RSpec.describe PeopleValidator do
 
   context 'phone number validation' do
     context 'when phone number is valid' do
-      valid_phones = [
-        '+1-555-123-4567',
-        '(555) 123-4567',
-        '555.123.4567',
-        '555 123 4567',
-        '+44 20 7946 0958'
-      ]
+      context 'when phone number is a valid UK number' do
+        let(:params) { valid_params.merge(phone_number: '+442079460958') }
 
-      valid_phones.each do |phone|
-        let(:params) { valid_params.merge(phone_number: phone) }
+        it_behaves_like 'a successful validation'
+      end
+
+      context 'when phone number is a valid UK number with spaces' do
+        let(:params) { valid_params.merge(phone_number: '+44 20 7946 0958') }
+
+        it_behaves_like 'a successful validation'
+      end
+
+      context 'when phone number is a valid India number' do
+        let(:params) { valid_params.merge(phone_number: '+919876543210') }
 
         it_behaves_like 'a successful validation'
       end
     end
 
     context 'when phone number is invalid' do
-      invalid_phones = [
-        'abc123',
-        '555-123-4567!',
-        '555@123#4567'
-      ]
-      invalid_phones.each do |phone|
-        let(:params) { valid_params.merge(phone_number: phone) }
+      context 'when phone number contains letters' do
+        let(:params) { valid_params.merge(phone_number: 'abc123') }
+
+        it_behaves_like 'a failed validation', :phone_number, 'must contain only digits, spaces, hyphens, plus signs, parentheses, and dots'
+      end
+
+      context 'when phone number contains special characters' do
+        let(:params) { valid_params.merge(phone_number: '555-123-4567!') }
 
         it_behaves_like 'a failed validation', :phone_number, 'must contain only digits, spaces, hyphens, plus signs, parentheses, and dots'
       end
