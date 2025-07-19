@@ -12,6 +12,7 @@ class Person < ApplicationRecord
   before_validation { self.uid = SecureRandom.uuid }
 
   VALID_RELATIONS = [ 'Friend', 'Mother', 'Father', 'Sister', 'Brother', 'Son', 'Daughter', 'Wife', 'Uncle', 'Aunt', 'Colleague', 'Other' ]
+  public_constant :VALID_RELATIONS
 
   private
 
