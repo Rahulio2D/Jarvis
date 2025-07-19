@@ -9,6 +9,7 @@ Some of the things I currently plan to implement include:
 - Notes/Reminders
 - Shopping Lists
 - Health/Fitness (Apple Watch Integration)
+- Control smart home appliances
 
 This project is being developed using [Cursor AI](https://cursor.com/)
 
