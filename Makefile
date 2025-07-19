@@ -54,6 +54,23 @@ test-coverage: ## Run tests with coverage
 	@echo "Running tests with coverage..."
 	COVERAGE=true bundle exec rspec
 
+# Code Quality Commands
+lint: ## Run RuboCop linting
+	@echo "Running RuboCop linting..."
+	bundle exec rubocop
+
+lint-fix: ## Run RuboCop with auto-fix
+	@echo "Running RuboCop with auto-fix..."
+	bundle exec rubocop --autocorrect
+
+lint-fix-all: ## Run RuboCop with auto-fix (including unsafe)
+	@echo "Running RuboCop with auto-fix (including unsafe)..."
+	bundle exec rubocop --autocorrect-all
+
+lint-todo: ## Generate RuboCop todo file
+	@echo "Generating RuboCop todo file..."
+	bundle exec rubocop --auto-gen-config
+
 # Docker Commands
 docker-build: ## Build Docker image
 	@echo "Building Docker image..."
@@ -142,4 +159,5 @@ s: start ## Alias for start
 c: console ## Alias for console
 t: test ## Alias for test
 d: deploy ## Alias for deploy
-m: migrate ## Alias for migrate 
+m: migrate ## Alias for migrate
+l: lint ## Alias for lint 
