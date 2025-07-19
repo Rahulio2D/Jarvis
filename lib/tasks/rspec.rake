@@ -1,11 +1,11 @@
 namespace :spec do
-  desc "Run all RSpec tests"
+  desc 'Run all RSpec tests'
   task all: :environment do
-    system("bundle exec rspec")
+    system('bundle exec rspec')
   end
 
-  desc "Run RSpec tests with coverage"
+  desc 'Run RSpec tests with coverage'
   task coverage: :environment do
-    system("COVERAGE=true bundle exec rspec")
+    system('COVERAGE=true bundle exec rspec')
   end
-end 
+end

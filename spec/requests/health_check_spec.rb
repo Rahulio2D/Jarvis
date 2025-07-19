@@ -12,4 +12,4 @@ RSpec.describe 'Health Check', type: :request do
       expect(response.body).to include('background-color: green')
     end
   end
-end 
+end

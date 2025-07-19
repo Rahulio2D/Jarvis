@@ -37,6 +37,7 @@ make c              # Alias for console
 make t              # Alias for test
 make d              # Alias for deploy
 make m              # Alias for migrate
+make l              # Alias for lint
 ```
 
 ### Deployment Commands
@@ -59,6 +60,14 @@ make docker-stop    # Stop Docker container
 make db-prepare     # Prepare database for current environment
 make db-reset       # Reset database (development only)
 make db-backup      # Backup SQLite database
+```
+
+### Code Quality Commands
+```bash
+make lint           # Run RuboCop linting
+make lint-fix       # Run RuboCop with auto-fix
+make lint-fix-all   # Run RuboCop with auto-fix (including unsafe)
+make lint-todo      # Generate RuboCop todo file
 ```
 
 ### Maintenance Commands
